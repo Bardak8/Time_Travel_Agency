@@ -1,0 +1,17 @@
+services:
+  timetravel-agency:
+    build:
+      context: .
+      dockerfile: ../Dockerfile
+    container_name: timetravel-agency
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - timetravel-network
+
+networks:
+  timetravel-network:
+    driver: bridge
