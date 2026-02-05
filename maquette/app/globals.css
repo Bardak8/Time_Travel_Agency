@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 229 60% 10%;
+    --foreground: 0 0% 100%;
+    --card: 230 40% 15%;
+    --card-foreground: 0 0% 100%;
+    --popover: 230 40% 15%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 43 65% 53%;
+    --primary-foreground: 229 60% 10%;
+    --secondary: 230 30% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 230 30% 20%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 43 65% 53%;
+    --accent-foreground: 229 60% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 30% 25%;
+    --input: 230 30% 20%;
+    --ring: 43 65% 53%;
+    --chart-1: 43 65% 53%;
+    --chart-2: 200 60% 50%;
+    --chart-3: 280 60% 50%;
+    --chart-4: 160 60% 45%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+    --sidebar-background: 230 40% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 43 65% 53%;
+    --sidebar-primary-foreground: 229 60% 10%;
+    --sidebar-accent: 230 30% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 230 30% 25%;
+    --sidebar-ring: 43 65% 53%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(230 40% 12%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(43 65% 53%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(43 65% 60%);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(26, 31, 58, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Gold glow effect */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Particle animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.particle {
+  animation: float linear infinite;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scroll indicator animation */
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* Typing indicator animation */
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}
+
+.typing-dot {
+  animation: typing-dot 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
