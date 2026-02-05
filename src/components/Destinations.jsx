@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import DestinationModal from './DestinationModal';
+import parisImage from '../assets/paris_1889_hero.jpg';
+import florenceImage from '../assets/florence_renaissance_hero.jpg';
+import cretaceousImage from '../assets/cretaceous_hero.jpg';
 
 const destinations = [
   {
@@ -10,6 +13,7 @@ const destinations = [
     period: '1889',
     description: 'Découvrez la splendeur de l\'Exposition Universelle et l\'inauguration de la Tour Eiffel',
     image: '🗼',
+    backgroundImage: parisImage,
     color: 'from-amber-500/20 to-orange-600/20',
     borderColor: 'border-amber-500/50',
     details: {
@@ -38,6 +42,7 @@ const destinations = [
     period: '-65 millions d\'années',
     description: 'Observez les derniers jours des dinosaures dans leur habitat naturel',
     image: '🦕',
+    backgroundImage: cretaceousImage,
     color: 'from-emerald-500/20 to-green-600/20',
     borderColor: 'border-emerald-500/50',
     details: {
@@ -66,6 +71,7 @@ const destinations = [
     period: '1504',
     description: 'Assistez à la création des plus grands chefs-d\'œuvre de la Renaissance',
     image: '🎨',
+    backgroundImage: florenceImage,
     color: 'from-purple-500/20 to-pink-600/20',
     borderColor: 'border-purple-500/50',
     details: {
@@ -128,37 +134,48 @@ const Destinations = () => {
               className="group cursor-pointer"
               onClick={() => setSelectedDestination(destination)}
             >
-              <div className={`relative h-full bg-gradient-to-br ${destination.color} backdrop-blur-sm border ${destination.borderColor} rounded-2xl p-8 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/20`}>
-                {/* Animated background on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-500/0 to-gold-600/0 group-hover:from-gold-500/10 group-hover:to-gold-600/10 transition-all duration-300"></div>
+              <div className={`relative h-full backdrop-blur-sm border ${destination.borderColor} rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/20`}>
+                {/* Image de fond */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ 
+                    backgroundImage: `url(${destination.backgroundImage})`,
+                  }}
+                />
+                
+                {/* Overlay sombre pour la lisibilité */}
+                <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/70 to-zinc-950/90"></div>
+                
+                {/* Overlay coloré au hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${destination.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 
                 {/* Content */}
-                <div className="relative z-10">
-                  <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="relative z-10 p-8 h-full flex flex-col">
+                  <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-lg">
                     {destination.image}
                   </div>
                   
                   <div className="mb-2">
-                    <h3 className="text-2xl font-display font-bold text-white mb-1">
+                    <h3 className="text-2xl font-display font-bold text-white mb-1 drop-shadow-lg">
                       {destination.title}
                     </h3>
-                    <p className="text-gold-400 font-semibold">{destination.subtitle}</p>
+                    <p className="text-gold-400 font-semibold drop-shadow-lg">{destination.subtitle}</p>
                   </div>
                   
-                  <p className="text-sm text-zinc-400 mb-2">{destination.period}</p>
+                  <p className="text-sm text-zinc-300 mb-2 drop-shadow-lg">{destination.period}</p>
                   
-                  <p className="text-zinc-300 mb-6 leading-relaxed">
+                  <p className="text-zinc-200 mb-6 leading-relaxed flex-grow drop-shadow-lg">
                     {destination.description}
                   </p>
                   
-                  <div className="flex items-center justify-between">
-                    <span className="text-gold-400 font-bold text-lg">
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="text-gold-400 font-bold text-lg drop-shadow-lg">
                       {destination.details.price}
                     </span>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-gold-500 text-zinc-950 font-semibold rounded-lg hover:bg-gold-400 transition-colors"
+                      className="px-4 py-2 bg-gold-500 text-zinc-950 font-semibold rounded-lg hover:bg-gold-400 transition-colors shadow-lg"
                     >
                       En savoir plus
                     </motion.button>
