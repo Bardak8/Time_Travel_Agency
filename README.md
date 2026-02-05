@@ -238,7 +238,7 @@ Projet éducatif - Usage libre
 ## 👨‍💻 Développement
 
 Créé avec passion pour démontrer les capacités de React, Tailwind CSS et Framer Motion.
-
+Un aperçu de notre maquette : https://v0-time-travel-agency-app-alpha.vercel.app/
 ---
 
 **Note** : Ce projet est fictif et créé à des fins de démonstration. Aucun voyage temporel réel n'est disponible (pour le moment) ! ⏳✨
